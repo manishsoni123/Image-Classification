@@ -1,101 +1,121 @@
+# Image Classification Project
 
-Note:- For Better representation you can use Documentation file    
+![Image Classification](https://img.shields.io/badge/Machine%20Learning-Image%20Classification-brightgreen)
 
-Image Classification Project - Summary
-Overview
-    •	GitHub Repository: Project Repository  (https://github.com/manishsoni123/Image-Classification)
-    •	Docker Images:
-    o	Backend (FastAPI): docker pull ms241/backend:latest
-    o	Frontend (Streamlit): docker pull ms241/frontend:latest
-    •	Model file:
-    o	 In Model Folder I store pkl file and .pth file both
-    •	Authentication for API:
-    o	Default credentials:
-        	Username admin
-        	Password: password123
-Remember:- For Access Stremlit UI You Need to Run Backend service First on port 8090
-Project Structure
-    •	backend/ → FastAPI-based REST API for model inference.
-    •	frontend/ → Streamlit UI for image classification.
-    •	model/ → Stores trained model files (.pkl and .pth).
-    •	docker-compose.yml → Runs backend and frontend together.
-    •	EDA_training_evaluation.ipynb → Data analysis and model training notebook.
-    o	Perform EDA 
-    o	Model Training
-    o	Model Evalution
-Dataset
-    •	Uses CIFAR-10 (60,000 images across 10 classes).
-Data Preprocessing
-    •	Resized images, normalized pixel values, and applied augmentation.
-    •	Converted images to PyTorch tensors.
-    •	Split dataset into training, validation, and testing sets.
-Model Training
-    •	Used ResNet-18 CNN model with PyTorch.
-    •	Applied early stopping and learning rate scheduling.
-    •	Evaluated model using Accuracy, Precision, Recall, and Confusion Matrix.
-Model Deployment
-    •	Backend: FastAPI-based REST API with authentication.
-    •	Endpoints:
-    o	/health-check → API health check.
-    o	/predict → Upload image for classification.
-    •	Frontend: Streamlit UI for easy interaction.
-    •	Dockerized Deployment: Backend & frontend containerized using Docker.
-Running Instructions (Detailed Explanation)
-🔹 Running Without Docker (Manual Execution)
+## 🚀 Overview
+This project is an end-to-end Image Classification system using a custom **ResNet-18** model. It includes **FastAPI** for the backend, **Streamlit** for the frontend, and is containerized using **Docker**.
 
-In your local system create any directory and clone this repository to this command ( git required )
-    git clone https://github.com/manishsoni123/Image-Classification.git
+### 📌 GitHub Repository: [Project Repository](https://github.com/manishsoni123/Image-Classification)
+### 🐳 Docker Images:
+- **Backend (FastAPI):** `docker pull ms241/backend:latest`
+- **Frontend (Streamlit):** `docker pull ms241/frontend:latest`
 
-    1.	Backend (FastAPI) Setup:
-        o	Navigate to the backend folder: 
-            cd backend
-        o	Install dependencies: 
-            Create environment and active it 
-            python -m venv env 
-            For Activation  Linux:- source env/bin/activate
-            For Windows :- env/Scripts/activate
-            Install Requirements
-            pip install -r requirements.txt
-        o	Start the FastAPI application: 
-            uvicorn app:app --host 0.0.0.0 --port 8090
-        o	The API will be available at: http://localhost:8090
-    2.	Frontend (Streamlit) Setup:
-        o	Navigate to the frontend folder: 
-            cd frontend
-        o	Install dependencies: 
-            pip install -r requirements.txt
-        o	Start the Streamlit application: 
-            streamlit run app.py --server.port=8501 --server.address=0.0.0.0
-        o	The UI will be available at: http://localhost:8501
-________________________________________
-🔹 Running With Docker (Containerized Execution)
-    1)	In your local system create any directory and clone this repository to this command ( git required )
-        git clone https://github.com/manishsoni123/Image-Classification.git
-    2)	After that Go to that directory and run this command This command is automatically build docker image and run it ( docker installation is required for this ) 
-		docker-compose up 
-    
-   	If you don’t want to build image then pull form this I  already Build Docker images and Push Into Docker Hub Here is Link 
-        o	Backend (FastAPI): docker pull ms241/backend:latest
-        o	Frontend (Streamlit): docker pull ms241/frontend:latest
-              Pull That image and Run this command docker-compose up 
+### 📁 Model Files:
+- **Stored in `model/` folder**: `.pkl` and `.pth` model files.
 
-________________________________________
-Accessing the Application
-    •	Frontend (Streamlit UI): http://localhost:8501
-    •	Backend (FastAPI API): http://localhost:8090/helth-check
-Authentication
-    •	Default credentials: admin/password123 (configurable via env variables).
+### 🔑 API Authentication:
+- **Default Credentials:**
+  - **Username:** `admin`
+  - **Password:** `password123`
 
-Bonus Features Implemented
-✅ Basic logging & error handling
-✅ Streamlit UI for user-friendly predictions
-✅ Dockerized deployment for seamless execution
+🚨 **Note:** The backend service must be running on port **8090** before accessing the Streamlit UI.
 
-Future Enhancements
-    •	Deploy on AWS, GCP, Azure, or Render.
-    •	Implement Grad-CAM or SHAP for model explainability.
-    •	Optimize model performance for real-time classification.
-    •	Add JWT authentication for improved security.
-Conclusion
-This project demonstrates an end-to-end ML pipeline from data preprocessing and model training to API deployment and frontend UI integration.
+---
+## 📂 Project Structure
+```
+image-classification-project/
+│── backend/               # FastAPI Backend
+│── frontend/              # Streamlit Frontend
+│── model/                 # Trained model files
+│── docker-compose.yml     # Docker Compose file
+│── EDA_training_evaluation.ipynb # Data Preprocessing & Training
+```
+
+### 🔍 Dataset: **CIFAR-10** (60,000 images, 10 classes)
+
+### 🛠 Data Preprocessing
+✅ Resized images, normalized pixels, and applied augmentation.  
+✅ Converted images to PyTorch tensors.  
+✅ Split dataset into **train, validation, and test sets**.  
+
+### 🧠 Model Training
+✅ Used **ResNet-18** CNN model (PyTorch).  
+✅ Applied **early stopping** and **learning rate scheduling**.  
+✅ Evaluated using **Accuracy, Precision, Recall, and Confusion Matrix**.  
+
+### 🚀 Model Deployment
+✅ **Backend:** FastAPI-based REST API with authentication.  
+✅ **Endpoints:**
+- `/health-check` → API health check.
+- `/predict` → Upload image for classification.
+✅ **Frontend:** Streamlit UI for user interaction.  
+✅ **Dockerized Deployment:** Backend & frontend containerized using Docker.  
+
+---
+## 🏃 Running Instructions
+### 🔹 Running Without Docker (Manual Execution)
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/manishsoni123/Image-Classification.git
+   ```
+2. **Backend (FastAPI) Setup:**  
+   ```bash
+   cd backend
+   python -m venv env  # Create virtual environment
+   source env/bin/activate  # (Linux) Activate environment
+   env\Scripts\activate  # (Windows) Activate environment
+   pip install -r requirements.txt  # Install dependencies
+   uvicorn app:app --host 0.0.0.0 --port 8090  # Start FastAPI
+   ```
+3. **Frontend (Streamlit) Setup:**  
+   ```bash
+   cd frontend
+   pip install -r requirements.txt  # Install dependencies
+   streamlit run app.py --server.port=8501 --server.address=0.0.0.0
+   ```
+4. **Access URLs:**  
+   - **Backend:** `http://localhost:8090`
+   - **Frontend:** `http://localhost:8501`
+
+---
+### 🔹 Running With Docker (Containerized Execution)
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/manishsoni123/Image-Classification.git
+   ```
+2. **Run the application with Docker Compose:**  
+   ```bash
+   docker-compose up --build
+   ```
+3. **Alternative (Use Pre-Built Images from Docker Hub):**  
+   ```bash
+   docker pull ms241/backend:latest
+   docker pull ms241/frontend:latest
+   docker-compose up
+   ```
+4. **Access URLs:**  
+   - **Backend:** `http://localhost:8090/health-check`
+   - **Frontend:** `http://localhost:8501`
+
+---
+## 🔐 Authentication
+- **Default Credentials:** `admin/password123`
+- Can be modified using environment variables `API_USERNAME` and `API_PASSWORD`.
+
+---
+## 🎯 Bonus Features Implemented
+✅ **Basic logging & error handling**  
+✅ **Streamlit UI for user-friendly interaction**  
+✅ **Dockerized deployment for smooth execution**  
+
+---
+## 🔮 Future Enhancements
+🔹 Deploy on **AWS, GCP, Azure, or Render**.  
+🔹 Implement **Grad-CAM or SHAP** for model explainability.  
+🔹 Optimize model for **real-time inference**.  
+🔹 Add **JWT authentication** for better security.  
+
+---
+## 📌 Conclusion
+This project successfully demonstrates a **complete ML pipeline**, from **data preprocessing & model training** to **API deployment & frontend integration**. 🚀
 
