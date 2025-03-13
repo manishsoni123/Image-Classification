@@ -1,13 +1,21 @@
-fastapi
-uvicorn
-torch
+torch --index-url https://download.pytorch.org/whl/cpu
 torchvision
-opencv-python
-numpy
-pillow
-scikit-learn
-pydantic
-requests
-python-multipart
-seaborn
-matplotlib
+torchaudio
+click==8.1.8
+fastapi==0.115.11
+uvicorn==0.34.0
+opencv-python-headless==4.11.0.86  # Headless version for servers
+numpy==2.1.2
+pillow==11.0.0
+scikit-learn==1.6.1
+pydantic==2.10.6
+requests==2.32.3
+python-multipart==0.0.20
+seaborn==0.13.2
+matplotlib==3.10.1
+starlette==0.46.1
+typing_extensions==4.12.2
+h11
+pydantic_core
+annotated_types
+anyio

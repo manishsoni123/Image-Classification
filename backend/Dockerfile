@@ -6,7 +6,9 @@ WORKDIR /app
 
 # Copy files
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --upgrade pip
+RUN pip install  --timeout=100 --retries=10 --no-cache-dir --no-deps --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org -r requirements.txt
+
 
 COPY . .
 

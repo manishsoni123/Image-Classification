@@ -24,7 +24,7 @@ def authenticate(credentials: HTTPBasicCredentials = Security(security)):
     return credentials.username
 
 # Load the model from the specified environment variable path
-MODEL_PATH = os.getenv("MODEL_PATH", "../model/custom_resnet18.pkl")
+MODEL_PATH = os.getenv("MODEL_PATH", "custom_resnet18.pkl")
 
 try:
     with open(MODEL_PATH, "rb") as f:
@@ -76,6 +76,3 @@ async def predict(file: UploadFile = File(...), username: str = Depends(authenti
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction error: {e}")
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8090)))
