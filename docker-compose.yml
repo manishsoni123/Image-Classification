@@ -1,0 +1,28 @@
+# Updated docker-compose.yml
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./backend:/app
+    environment:
+      - MODEL_PATH=/app/model/custom_resnet18.pkl
+      - API_USERNAME=admin
+      - API_PASSWORD=password123
+      - PORT=8090
+    restart: always
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+    environment:
+      - BACKEND_URL=http://backend:8090/predict
+    restart: always
